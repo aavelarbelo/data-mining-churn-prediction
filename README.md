@@ -47,15 +47,15 @@ The detailed description of the data source and columns will be documented in:
 data/raw/SOURCE.md
 ```
 
-Principais grupos de variáveis presentes no dataset:
+Main groups of variables present in the dataset:
 
-| Grupo | Exemplos de Variáveis | Descrição |
+| Group | Examples of Variables | Description |
 |---|---|---|
-| Dados demográficos | gender, SeniorCitizen, Partner, Dependents | Informações gerais sobre o cliente |
-| Serviços contratados | PhoneService, InternetService, OnlineSecurity, TechSupport | Serviços utilizados pelo cliente |
-| Informações contratuais | Contract, PaperlessBilling, PaymentMethod | Tipo de contrato e forma de pagamento |
-| Valores financeiros | MonthlyCharges, TotalCharges | Custos mensais e totais |
-| Variável-alvo | Churn | Indica se o cliente cancelou ou não o serviço |
+| Demographic data | gender, SeniorCitizen, Partner, Dependents | General information about the customer |
+| Contracted services | PhoneService, InternetService, OnlineSecurity, TechSupport | Services used by the customer |
+| Contract information | Contract, PaperlessBilling, PaymentMethod | Type of contract and payment method |
+| Financial values | MonthlyCharges, TotalCharges | Monthly and total costs |
+| Target variable | Churn | Indicates whether the customer canceled the service or not |
 
 Possible limitations of the dataset:
 
@@ -97,20 +97,20 @@ This project follows the **CRISP-DM** methodology, a structured approach for dat
 data-mining-churn-prediction/
 
 ├── data/
-│   ├── raw/              # dados brutos e documentação da fonte
-│   └── processed/        # dados tratados e preparados
+│   ├── raw/              # raw data and source documentation
+│   └── processed/        # cleaned and prepared data
 │
-├── notebooks/            # EDA, preparação, modelagem e avaliação
+├── notebooks/            # EDA, preparation, modeling, and evaluation
 │
-├── src/                  # código-fonte reutilizável
+├── src/                  # reusable source code
 │   ├── preprocessing.py
 │   ├── train_models.py
 │   └── evaluate_models.py
 │
-├── models/               # modelos treinados ou serializados
+├── models/               # trained or serialized models
 │
 ├── reports/
-│   └── figures/          # gráficos e visualizações exportadas
+│   └── figures/          # exported charts and visualizations
 │
 ├── requirements.txt
 ├── .gitignore
@@ -160,48 +160,44 @@ The results will be added after the modeling and evaluation stage is completed.
 | SVM | – | – | – | – | – |
 | Naive Bayes | – | – | – | – | – |
 
-Em problemas de churn, **recall** tende a ser uma métrica especialmente relevante, pois o objetivo é reduzir a quantidade de clientes em risco que o modelo deixa de identificar.
+In churn problems, **recall** tends to be an especially relevant metric, because the goal is to reduce the number of at-risk customers that the model fails to identify.
 
-A escolha do melhor modelo não será feita apenas pela accuracy, mas pelo equilíbrio entre precision, recall, F1-score e capacidade de apoiar uma decisão de negócio.
+The choice of the best model will not be based only on accuracy, but on the balance between precision, recall, F1-score, and the ability to support a business decision.
 
-## Principais Insights
+## Main Insights
 
-Os principais insights serão adicionados após a análise exploratória e a comparação dos modelos.
+The main insights will be added after the exploratory analysis and the comparison of the models.
 
-Exemplos de análises previstas:
+Examples of planned analyses:
 
-- Perfil dos clientes com maior taxa de churn.
-- Relação entre tipo de contrato e probabilidade de cancelamento.
-- Impacto de serviços adicionais na retenção dos clientes.
-- Diferenças entre clientes com contrato mensal e contratos de longo prazo.
-- Importância das variáveis financeiras, como mensalidade e valor total pago.
+- Profile of customers with the highest churn rate.
+- Relationship between contract type and probability of cancellation.
+- Impact of additional services on customer retention.
+- Differences between customers with monthly contracts and long-term contracts.
+- Importance of financial variables, such as monthly charges and total amount paid.
 
-## Limitações e Próximos Passos
+## Limitations and Next Steps
 
-Limitações atuais:
+Current limitations:
 
-- O projeto utiliza um dataset público e limitado.
-- Ainda não inclui tuning avançado de hiperparâmetros.
-- Ainda não inclui deployment do modelo.
-- A análise será conduzida com foco educacional e de portfólio.
+- The project uses a public and limited dataset.
+- It does not yet include advanced hyperparameter tuning.
+- It does not yet include model deployment.
+- The analysis will be conducted with an educational and portfolio focus.
 
-Próximos passos:
+Next steps:
 
-- Concluir a análise exploratória dos dados.
-- Implementar o pipeline de pré-processamento.
-- Treinar e comparar os modelos definidos.
-- Avaliar os modelos com métricas apropriadas para churn.
-- Exportar gráficos e matrizes de confusão para `reports/figures/`.
-- Documentar os principais insights de negócio.
-- Evoluir o projeto para uma estrutura mais próxima de produção, com scripts reutilizáveis em `src/`.
+- Complete the exploratory data analysis.
+- Implement the preprocessing pipeline.
+- Train and compare the defined models.
+- Evaluate the models with appropriate metrics for churn.
+- Export charts and confusion matrices to `reports/figures/`.
+- Document the main business insights.
+- Evolve the project to a structure closer to production, with reusable scripts in `src/`.
 
-## Autor
+## Author
 
 **Andressa Avelar Belo**  
 Control & Automation Engineer transitioning into Data Engineering, Big Data and Analytics.
 
 [LinkedIn](https://linkedin.com/in/andressaavelar) · [GitHub](https://github.com/aavelarbelo) · eng.belo@gmail.com
-
-## Licença
-
-Este projeto está sob a licença MIT — veja o arquivo [LICENSE](LICENSE) para detalhes.
