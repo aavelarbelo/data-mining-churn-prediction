@@ -20,27 +20,28 @@
 - [Autor](#autor)
 - [Licença](#licença)
 
-## Visão Geral
+## Overview
 
-Este projeto tem como objetivo prever a evasão de clientes, também conhecida como **customer churn**, em uma empresa de telecomunicações. O projeto segue a metodologia **CRISP-DM**, passando pelas etapas de entendimento do problema, análise exploratória dos dados, preparação dos dados, modelagem e avaliação dos resultados.
+This project aims to predict customer loss, also known as **customer churn**, in a telecommunications company. The project follows the **CRISP-DM** methodology, going through the stages of problem understanding, exploratory data analysis, data preparation, modeling, and evaluation of the results.
 
-O trabalho começou como parte dos estudos da unidade curricular de **Data Mining**, na Pós-Graduação em Big Data and Decision Making no ISEP, e está sendo desenvolvido como um projeto de portfólio técnico, com foco em reprodutibilidade, documentação e comparação de modelos de classificação.
+The work started as part of the studies in the **Data Mining** course unit, in the Post-Graduation in Big Data and Decision Making at ISEP, and is being developed as a technical portfolio project, with a focus on reproducibility, documentation, and comparison of classification models.
+
 
 > 🚧 **Status:** work in progress — EDA, preprocessing and modeling notebooks are being added incrementally.
 
-## Problema de Negócio
+## Business Problem
 
-A retenção de clientes é um desafio importante para empresas de telecomunicações, pois manter um cliente existente tende a ser mais barato do que adquirir um novo cliente.
+Customer retention is an important challenge for telecommunications companies, because keeping an existing customer is usually cheaper than acquiring a new customer.
 
-O objetivo deste projeto é identificar, a partir de dados contratuais e de utilização dos serviços, quais clientes apresentam maior probabilidade de cancelar o serviço. Essa previsão pode apoiar ações preventivas de retenção, como campanhas direcionadas, revisão de planos, ofertas personalizadas ou contacto proativo com clientes em risco.
+The goal of this project is to identify, based on contract data and service usage data, which customers have a higher probability of canceling the service. This prediction can support preventive retention actions, such as targeted campaigns, plan reviews, personalized offers, or proactive contact with customers at risk.
 
-Neste tipo de problema, a métrica de **recall** é especialmente importante, pois deixar de identificar um cliente que está prestes a sair pode representar perda direta de receita.
+In this type of problem, the **recall** metric is especially important, because failing to identify a customer who is about to leave can represent a direct loss of revenue.
 
 ## Dataset
 
-O projeto utiliza o dataset público **Telco Customer Churn**, frequentemente usado em estudos de classificação e previsão de churn.
+The project uses the public **Telco Customer Churn** dataset, frequently used in classification and churn prediction studies.
 
-A descrição detalhada da origem dos dados e das colunas será documentada em:
+The detailed description of the data source and columns will be documented in:
 
 ```text
 data/raw/SOURCE.md
@@ -56,28 +57,28 @@ Principais grupos de variáveis presentes no dataset:
 | Valores financeiros | MonthlyCharges, TotalCharges | Custos mensais e totais |
 | Variável-alvo | Churn | Indica se o cliente cancelou ou não o serviço |
 
-Possíveis limitações do dataset:
+Possible limitations of the dataset:
 
-- Dados representam um cenário específico de telecomunicações.
-- O dataset é público e pode não refletir todas as variáveis usadas por empresas reais.
-- Algumas variáveis podem conter vieses relacionados ao perfil dos clientes ou ao período de coleta.
-- O projeto tem finalidade educacional e de portfólio, não sendo um modelo pronto para produção.
+- The data represents a specific telecommunications scenario.
+- The dataset is public and may not reflect all variables used by real companies.
+- Some variables may contain biases related to the customer profile or the data collection period.
+- The project has an educational and portfolio purpose, and is not a production-ready model.
 
-## Metodologia CRISP-DM
+## CRISP-DM Methodology
 
-Este projeto segue a metodologia **CRISP-DM**, uma abordagem estruturada para projetos de mineração de dados.
+This project follows the **CRISP-DM** methodology, a structured approach for data mining projects.
 
 1. **Business Understanding**  
-   Definição do problema de negócio, objetivo do modelo e relevância da previsão de churn para ações de retenção.
+   Definition of the business problem, the model objective, and the relevance of churn prediction for retention actions.
 
 2. **Data Understanding**  
-   Análise inicial do dataset, verificação de tipos de dados, valores ausentes, distribuição da variável-alvo, estatísticas descritivas e análise exploratória.
+   Initial analysis of the dataset, verification of data types, missing values, target variable distribution, descriptive statistics, and exploratory data analysis.
 
 3. **Data Preparation**  
-   Limpeza dos dados, tratamento de valores ausentes, encoding de variáveis categóricas, normalização ou padronização quando necessário e separação entre treino e teste.
+   Data cleaning, treatment of missing values, encoding of categorical variables, normalization or standardization when necessary, and train-test split.
 
 4. **Modeling**  
-   Treinamento e comparação de diferentes algoritmos de classificação, incluindo:
+   Training and comparison of different classification algorithms, including:
 
    - K-Nearest Neighbors
    - Decision Tree
@@ -85,12 +86,12 @@ Este projeto segue a metodologia **CRISP-DM**, uma abordagem estruturada para pr
    - Gaussian Naive Bayes
 
 5. **Evaluation**  
-   Avaliação dos modelos com métricas adequadas para classificação, incluindo accuracy, precision, recall, F1-score, matriz de confusão e curvas ROC/PR.
+   Evaluation of the models using appropriate classification metrics, including accuracy, precision, recall, F1-score, confusion matrix, and ROC/PR curves.
 
 6. **Deployment**  
-   Nesta fase inicial, o projeto não inclui deployment em produção. Como próximos passos, o modelo poderá ser organizado em uma pipeline reutilizável e futuramente exposto por meio de uma API ou dashboard analítico.
+   In this initial phase, the project does not include production deployment. As next steps, the model may be organized into a reusable pipeline and later exposed through an API or analytical dashboard.
 
-## Estrutura do Repositório
+## Repository Structure
 
 ```text
 data-mining-churn-prediction/
@@ -117,19 +118,19 @@ data-mining-churn-prediction/
 └── README.md
 ```
 
-## Tecnologias
+## Technologies
 
-| Camada | Tecnologia |
+| Layer | Technology |
 |---|---|
-| Linguagem | Python 3.11 |
-| Manipulação de dados | Pandas, NumPy |
-| Modelagem | scikit-learn |
-| Visualização | Matplotlib, Seaborn |
-| Ambiente | Jupyter Notebook |
-| Versionamento | Git, GitHub |
-| Metodologia | CRISP-DM |
+| Language | Python 3.11 |
+| Data manipulation | Pandas, NumPy |
+| Modeling | scikit-learn |
+| Visualization | Matplotlib, Seaborn |
+| Environment | Jupyter Notebook |
+| Version control | Git, GitHub |
+| Methodology | CRISP-DM |
 
-## Instalação e Execução
+## Installation and Execution
 
 ```bash
 git clone https://github.com/aavelarbelo/data-mining-churn-prediction.git
@@ -142,15 +143,15 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-No Linux ou macOS, a ativação do ambiente virtual pode ser feita com:
+On Linux or macOS, the virtual environment can be activated with:
 
 ```bash
 source .venv/bin/activate
 ```
 
-## Resultados e Avaliação dos Modelos
+## Results and Model Evaluation
 
-Os resultados serão adicionados após a conclusão da etapa de modelagem e avaliação.
+The results will be added after the modeling and evaluation stage is completed.
 
 | Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
 |---|---:|---:|---:|---:|---:|
