@@ -5,20 +5,20 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 
-## 📑 Sumário
+## 📑 Table of Contents
 
-- [Visão Geral](#visão-geral)
-- [Problema de Negócio](#problema-de-negócio)
+- [Overview](#overview)
+- [Business Problem](#business-problem)
 - [Dataset](#dataset)
-- [Metodologia CRISP-DM](#metodologia-crisp-dm)
-- [Estrutura do Repositório](#estrutura-do-repositório)
-- [Tecnologias](#tecnologias)
-- [Instalação e Execução](#instalação-e-execução)
-- [Resultados e Avaliação dos Modelos](#resultados-e-avaliação-dos-modelos)
-- [Principais Insights](#principais-insights)
-- [Limitações e Próximos Passos](#limitações-e-próximos-passos)
-- [Autor](#autor)
-- [Licença](#licença)
+- [CRISP-DM Methodology](#crisp-dm-methodology)
+- [Repository Structure](#repository-structure)
+- [Technologies](#technologies)
+- [Installation and Execution](#installation-and-execution)
+- [Results and Model Evaluation](#results-and-model-evaluation)
+- [Main Insights](#main-insights)
+- [Limitations and Next Steps](#limitations-and-next-steps)
+- [Author](#author)
+- [License](#license)
 
 ## Overview
 
