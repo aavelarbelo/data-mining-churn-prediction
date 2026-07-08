@@ -1,5 +1,0 @@
-Modelo,Accuracy,Precision,Recall,F1
-KNN,0.758,0.543,0.547,0.545
-Decision Tree,0.734,0.498,0.539,0.518
-SVM,0.803,0.652,0.547,0.595
-Naive Bayes,0.685,0.449,0.846,0.587
