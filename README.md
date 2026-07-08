@@ -22,12 +22,9 @@
 
 ## Overview
 
-This project aims to predict customer loss, also known as **customer churn**, in a telecommunications company. The project follows the **CRISP-DM** methodology, going through the stages of problem understanding, exploratory data analysis, data preparation, modeling, and evaluation of the results.
+This project predicts customer loss, also known as **customer churn**, in a telecommunications company. It follows the **CRISP-DM** methodology, going through the stages of problem understanding, exploratory data analysis, data preparation, modeling, and evaluation of the results.
 
-The work started as part of the studies in the **Data Mining** course unit, in the Post-Graduation in Big Data and Decision Making at ISEP, and is being developed as a technical portfolio project, with a focus on reproducibility, documentation, and comparison of classification models.
-
-
-> 🚧 **Status:** work in progress — EDA, preprocessing and modeling notebooks are being added incrementally.
+The work started as part of the **Data Mining** course unit, in the Post-Graduation in Big Data and Decision Making at ISEP, and was developed into a complete, reproducible portfolio project, with a focus on documentation and comparison of classification models.
 
 ## Business Problem
 
@@ -39,13 +36,7 @@ In this type of problem, the **recall** metric is especially important, because 
 
 ## Dataset
 
-The project uses the public **Telco Customer Churn** dataset, frequently used in classification and churn prediction studies.
-
-The detailed description of the data source and columns will be documented in:
-
-```text
-data/raw/SOURCE.md
-```
+The project uses the public **Telco Customer Churn** dataset, frequently used in classification and churn prediction studies. The data source is documented in `data/raw/SOURCE.md`.
 
 Main groups of variables present in the dataset:
 
@@ -57,6 +48,8 @@ Main groups of variables present in the dataset:
 | Financial values | MonthlyCharges, TotalCharges | Monthly and total costs |
 | Target variable | Churn | Indicates whether the customer canceled the service or not |
 
+A relevant data-quality note: the dataset was assembled from **two sources with different encodings** (`Yes/No` vs `True/False` vs `0/1`, and `"No internet service"` vs missing values). These inconsistencies were detected during the project and unified in the preparation phase — see [Main Insights](#main-insights).
+
 Possible limitations of the dataset:
 
 - The data represents a specific telecommunications scenario.
@@ -66,30 +59,28 @@ Possible limitations of the dataset:
 
 ## CRISP-DM Methodology
 
-This project follows the **CRISP-DM** methodology, a structured approach for data mining projects.
-
 1. **Business Understanding**  
    Definition of the business problem, the model objective, and the relevance of churn prediction for retention actions.
 
-2. **Data Understanding**  
-   Initial analysis of the dataset, verification of data types, missing values, target variable distribution, descriptive statistics, and exploratory data analysis.
+2. **Data Understanding** (`notebooks/01_data_understanding.ipynb`)  
+   Initial analysis of the dataset: data types, missing values, target variable distribution, descriptive statistics, and exploratory data analysis.
 
-3. **Data Preparation**  
-   Data cleaning, treatment of missing values, encoding of categorical variables, normalization or standardization when necessary, and train-test split.
+3. **Data Preparation** (`notebooks/02_data_preparation.ipynb`)  
+   Data cleaning, unification of mixed encodings from the merged sources, treatment of structural missing values (customers without a given service), conversion of `TotalCharges` to numeric, and export of the clean dataset to `data/processed/`.
 
-4. **Modeling**  
-   Training and comparison of different classification algorithms, including:
+4. **Modeling** (`notebooks/03_modeling.ipynb`)  
+   One-hot encoding, stratified 80/20 train-test split, feature scaling with `StandardScaler`, and training of four classifiers:
 
    - K-Nearest Neighbors
    - Decision Tree
    - Support Vector Machine
    - Gaussian Naive Bayes
 
-5. **Evaluation**  
-   Evaluation of the models using appropriate classification metrics, including accuracy, precision, recall, F1-score, confusion matrix, and ROC/PR curves.
+5. **Evaluation** (`notebooks/03_modeling.ipynb`)  
+   Accuracy, precision, recall, F1-score, confusion matrices, ROC curves, and 5-fold cross-validation.
 
 6. **Deployment**  
-   In this initial phase, the project does not include production deployment. As next steps, the model may be organized into a reusable pipeline and later exposed through an API or analytical dashboard.
+   Not included in this phase. As next steps, the model may be organized into a reusable pipeline and later exposed through an API or analytical dashboard.
 
 ## Repository Structure
 
@@ -100,18 +91,16 @@ data-mining-churn-prediction/
 │   ├── raw/              # raw data and source documentation
 │   └── processed/        # cleaned and prepared data
 │
-├── notebooks/            # EDA, preparation, modeling, and evaluation
-│
-├── src/                  # reusable source code
-│   ├── preprocessing.py
-│   ├── train_models.py
-│   └── evaluate_models.py
-│
-├── models/               # trained or serialized models
+├── notebooks/
+│   ├── 01_data_understanding.ipynb
+│   ├── 02_data_preparation.ipynb
+│   └── 03_modeling.ipynb
 │
 ├── reports/
-│   └── figures/          # exported charts and visualizations
+│   ├── figures/          # exported charts and visualizations
+│   └── model_comparison.csv
 │
+├── WORKLOG.md            # session-by-session work log
 ├── requirements.txt
 ├── .gitignore
 ├── LICENSE
@@ -149,32 +138,33 @@ On Linux or macOS, the virtual environment can be activated with:
 source .venv/bin/activate
 ```
 
+Run the notebooks in order (01 → 02 → 03) to reproduce the full pipeline.
+
 ## Results and Model Evaluation
 
-The results will be added after the modeling and evaluation stage is completed.
+All models were trained on an 80/20 stratified split (5,042 customers, 46 features after one-hot encoding) with `StandardScaler` applied. Results on the held-out test set (1,009 customers), with "Yes" (churn) as the positive class:
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+| Model | Accuracy | Precision | Recall | F1 | ROC AUC |
 |---|---:|---:|---:|---:|---:|
-| KNN | – | – | – | – | – |
-| Decision Tree | – | – | – | – | – |
-| SVM | – | – | – | – | – |
-| Naive Bayes | – | – | – | – | – |
+| KNN (k=5) | 0.758 | 0.543 | 0.547 | 0.545 | 0.79 |
+| Decision Tree | 0.734 | 0.498 | 0.539 | 0.518 | 0.67 |
+| **SVM** | **0.803** | **0.652** | 0.547 | **0.595** | **0.82** |
+| **Naive Bayes** | 0.685 | 0.449 | **0.846** | 0.587 | **0.82** |
 
-In churn problems, **recall** tends to be an especially relevant metric, because the goal is to reduce the number of at-risk customers that the model fails to identify.
+5-fold cross-validation (F1 of the positive class) confirmed the stability of these results: all standard deviations were below 0.03, with Naive Bayes reaching the best mean F1 (0.597 ± 0.016) and SVM the most stable performance (0.571 ± 0.006).
 
-The choice of the best model will not be based only on accuracy, but on the balance between precision, recall, F1-score, and the ability to support a business decision.
+![Confusion matrices — finalists](reports/figures/confusion_matrices_finalists.png)
+
+![ROC curves — all models](reports/figures/roc_curves.png)
+
+Scaling proved decisive: without `StandardScaler`, the SVM collapsed to predicting only the majority class (recall = 0.000). The full comparison table is available in `reports/model_comparison.csv`.
 
 ## Main Insights
 
-The main insights will be added after the exploratory analysis and the comparison of the models.
-
-Examples of planned analyses:
-
-- Profile of customers with the highest churn rate.
-- Relationship between contract type and probability of cancellation.
-- Impact of additional services on customer retention.
-- Differences between customers with monthly contracts and long-term contracts.
-- Importance of financial variables, such as monthly charges and total amount paid.
+- **Accuracy is misleading on imbalanced data.** A naive model predicting "no churn" for everyone would score 0.735 accuracy. KNN's 0.758 looks decent but only catches about half of the actual churners.
+- **There is no single best model — it depends on the cost of errors.** Naive Bayes catches 85% of churners (only 41 out of 267 missed) at the cost of many false alarms (277). SVM offers the best overall balance (F1 0.595, AUC 0.82) with far fewer false alarms (78), but misses 121 churners. If a retention action is cheap (e.g., an email), Naive Bayes maximizes saved customers; if it is expensive (e.g., an aggressive discount), SVM is the better choice.
+- **Feature scaling can make or break a model.** SVM went from completely useless (recall = 0.000) to the best overall performer (accuracy 0.803) simply by standardizing the features. Tree-based models were unaffected, as expected.
+- **Data quality issues hide in layers.** The merged sources used different encodings; one-hot encoding exposed the problem (77 columns instead of ~46). The fix was applied in the preparation phase and the pipeline re-run — reproducibility made the correction cheap.
 
 ## Limitations and Next Steps
 
@@ -182,18 +172,15 @@ Current limitations:
 
 - The project uses a public and limited dataset.
 - It does not yet include advanced hyperparameter tuning.
-- It does not yet include model deployment.
-- The analysis will be conducted with an educational and portfolio focus.
+- It does not include model deployment.
+- The analysis was conducted with an educational and portfolio focus.
 
 Next steps:
 
-- Complete the exploratory data analysis.
-- Implement the preprocessing pipeline.
-- Train and compare the defined models.
-- Evaluate the models with appropriate metrics for churn.
-- Export charts and confusion matrices to `reports/figures/`.
-- Document the main business insights.
-- Evolve the project to a structure closer to production, with reusable scripts in `src/`.
+- Hyperparameter tuning (e.g., grid search on k for KNN, C/gamma for SVM).
+- Explore class-imbalance techniques (class weights, resampling).
+- Refactor reusable logic into `src/` scripts.
+- Evolve towards a production-style pipeline (API or analytical dashboard).
 
 ## Author
 
@@ -201,3 +188,7 @@ Next steps:
 Control & Automation Engineer transitioning into Data Engineering, Big Data and Analytics.
 
 [LinkedIn](https://linkedin.com/in/andressaavelar) · [GitHub](https://github.com/aavelarbelo) · eng.belo@gmail.com
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
