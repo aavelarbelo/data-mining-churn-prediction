@@ -5,7 +5,16 @@ Registo de sessões de trabalho: o que foi feito, próximo passo e notas.
 
 ---
 
-## 2026-07-08
+## 2026-07-08 (sessão 2)
+- **FIZ:** Etapas 4/5 completas — matrizes de confusão dos finalistas (Naive Bayes
+  deixa fugir só 41 churners em 267, vs 121 do SVM), curvas ROC dos 4 modelos
+  (SVM e NB empatados em AUC 0.82; Decision Tree atrás com 0.67), README final
+  com a tabela de Results preenchida com números reais, Main Insights escritos
+  e selo WIP removido. **Projeto Data Mining COMPLETO.** 🎉
+- **PRÓXIMO PASSO:** decidir Etapa 6 (refactor leve para `src/`) ou avançar para o
+  próximo repositório da narrativa de portfólio (Data Warehouse).
+
+## 2026-07-08 (sessão 1)
 - **FIZ:** Etapa 3 (Modeling) completa — one-hot encoding, split estratificado 80/20,
   4 modelos treinados (KNN, Decision Tree, SVM, Naive Bayes), escalonamento com
   StandardScaler (SVM: 0.000 → 0.803 de accuracy) e validação cruzada 5-fold
@@ -19,9 +28,6 @@ Registo de sessões de trabalho: o que foi feito, próximo passo e notas.
   custo dos erros. Se falsos alarmes são baratos (ex.: email de retenção), o Naive
   Bayes maximiza clientes salvos (recall 0.846). Se a ação é cara (ex.: desconto
   agressivo), o SVM dá o melhor equilíbrio (F1 0.595, accuracy 0.803).
-- **PRÓXIMO PASSO:** Etapa 4/5 — matriz de confusão final, figuras para
-  `reports/figures/`, preencher a tabela de Results do README com os números reais
-  e retirar o selo WIP.
 - **NOTA:** o kernel do Jupyter usa o Python do sistema (não o .venv); instalar
   bibliotecas com `%pip install` dentro do notebook resolve.
 
