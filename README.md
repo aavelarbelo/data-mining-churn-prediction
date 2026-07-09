@@ -157,6 +157,10 @@ All models were trained on an 80/20 stratified split (5,042 customers, 46 featur
 
 ![ROC curves — all models](reports/figures/roc_curves.png)
 
+![Precision-Recall curves — all models](reports/figures/pr_curves.png)
+
+The Precision-Recall curves — more appropriate for imbalanced classes — confirm the same picture: SVM (AP = 0.63) and Naive Bayes (AP = 0.62) lead, well above the 0.26 baseline, while the Decision Tree (AP = 0.39) is the weakest model on the class that matters.
+
 Scaling proved decisive: without `StandardScaler`, the SVM collapsed to predicting only the majority class (recall = 0.000). The full comparison table is available in `reports/model_comparison.csv`.
 
 ## Main Insights
