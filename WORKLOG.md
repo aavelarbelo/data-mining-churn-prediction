@@ -3,6 +3,12 @@
 Registo de sessões de trabalho: o que foi feito, próximo passo e notas.
 (Session log: what was done, next step, and notes.)
 
+## 2026-07-09
+- **FIZ:** curvas Precision-Recall adicionadas (lacuna da Etapa 4 fechada) — SVM
+  AP 0.63, NB 0.62, baseline 0.26; Decision Tree exposta (AP 0.39).
+- **PRÓXIMO PASSO:** perfil GitHub (README de perfil + pins) ou arrancar o
+  repositório de Data Warehouse.
+
 ---
 
 ## 2026-07-08 (sessão 2)
