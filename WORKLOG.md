@@ -16,7 +16,7 @@ Registo de sessões de trabalho: o que foi feito, próximo passo e notas.
   deixa fugir só 41 churners em 267, vs 121 do SVM), curvas ROC dos 4 modelos
   (SVM e NB empatados em AUC 0.82; Decision Tree atrás com 0.67), README final
   com a tabela de Results preenchida com números reais, Main Insights escritos
-  e selo WIP removido. **Projeto Data Mining COMPLETO.** 🎉
+  e selo WIP removido. **Projeto Data Mining COMPLETO.** 
 - **PRÓXIMO PASSO:** decidir Etapa 6 (refactor leve para `src/`) ou avançar para o
   próximo repositório da narrativa de portfólio (Data Warehouse).
 
