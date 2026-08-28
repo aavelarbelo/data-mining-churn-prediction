@@ -158,7 +158,7 @@ Next steps:
 ## Author
 
 **Andressa Avelar Belo**
-Control & Automation Engineer transitioning into Data Engineering, Big Data and Analytics.
+Control & Automation Engineer specializing in Data Engineering, Big Data and Analytics.
 
 [LinkedIn](https://linkedin.com/in/andressaavelar) · [GitHub](https://github.com/aavelarbelo) · eng.belo@gmail.com
 
